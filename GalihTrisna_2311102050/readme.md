@@ -1,6 +1,6 @@
 
 # HELLO 👋
-### Laporan Praktikum Modul 7
+### Laporan Praktikum Modul 10
 
 > Nama : Galih Trisna\
 > Nim : 2311102050 \

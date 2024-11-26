@@ -2,29 +2,17 @@ package main
 
 import "fmt"
 
-func selectionSortAsc(arr []int) {
-	n := len(arr)
-	for i := 0; i < n-1; i++ {
-		minIdx := i
-		for j := i + 1; j < n; j++ {
-			if arr[j] < arr[minIdx] {
-				minIdx = j
-			}
-		}
-		arr[i], arr[minIdx] = arr[minIdx], arr[i]
-	}
-}
-
-func selectionSortDesc(arr []int) {
+// Fungsi untuk mengurutkan array menggunakan selection sort
+func selectionSort(arr []int) {
 	n := len(arr)
 	for i := 0; i < n-1; i++ {
 		maxIdx := i
 		for j := i + 1; j < n; j++ {
-			if arr[j] > arr[maxIdx] { 
+			if arr[j] > arr[maxIdx] { // Cari elemen terbesar
 				maxIdx = j
 			}
 		}
-		arr[i], arr[maxIdx] = arr[maxIdx], arr[i] 
+		arr[i], arr[maxIdx] = arr[maxIdx], arr[i] // Tukar elemen
 	}
 }
 
@@ -48,32 +36,19 @@ func main() {
 			return
 		}
 
+		// Masukkan nomor rumah
 		houses := make([]int, m)
 		fmt.Printf("Masukkan nomor rumah kerabat untuk daerah ke-%d: ", i+1)
 		for j := 0; j < m; j++ {
 			fmt.Scan(&houses[j])
 		}
 
-		var oddNumbers, evenNumbers []int
-		for _, house := range houses {
-			if house%2 == 1 {
-				oddNumbers = append(oddNumbers, house)
-			} else { 
-				evenNumbers = append(evenNumbers, house)
-			}
-		}
+		// Urutkan dengan selection sort
+		selectionSort(houses)
 
-		selectionSortAsc(oddNumbers)
-
-		selectionSortDesc(evenNumbers)
-
+		// Cetak hasil
 		fmt.Printf("Hasil urutan rumah untuk daerah ke-%d: ", i+1)
-
-		for _, house := range oddNumbers {
-			fmt.Printf("%d ", house)
-		}
-
-		for _, house := range evenNumbers {
+		for _, house := range houses {
 			fmt.Printf("%d ", house)
 		}
 		fmt.Println()
